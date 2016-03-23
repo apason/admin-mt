@@ -10,8 +10,8 @@
         <li><?= $this->Html->link(__('List Answer'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Task'), ['controller' => 'Task', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Task'), ['controller' => 'Task', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List User'), ['controller' => 'User', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'User', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Subuser'), ['controller' => 'Subuser', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Subuser'), ['controller' => 'Subuser', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="answer form large-9 medium-8 columns content">
@@ -22,8 +22,8 @@
             echo $this->Form->input('issued');
             echo $this->Form->input('loaded', ['empty' => true]);
             echo $this->Form->input('enabled');
-            echo $this->Form->input('task_id', ['options' => $task, 'empty' => true]);
-            echo $this->Form->input('user_id', ['options' => $user, 'empty' => true]);
+            echo $this->Form->input('task_id', ['options' => $task]);
+            echo $this->Form->input('subuser_id', ['options' => $subuser]);
             echo $this->Form->input('uri');
         ?>
     </fieldset>

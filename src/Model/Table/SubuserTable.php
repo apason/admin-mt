@@ -1,19 +1,19 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Answer;
+use App\Model\Entity\Subuser;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Answer Model
+ * Subuser Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Task
- * @property \Cake\ORM\Association\BelongsTo $Subuser
+ * @property \Cake\ORM\Association\BelongsTo $User
+ * @property \Cake\ORM\Association\HasMany $Answer
  */
-class AnswerTable extends Table
+class SubuserTable extends Table
 {
 
     /**
@@ -26,17 +26,16 @@ class AnswerTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('answer');
+        $this->table('subuser');
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo('Task', [
-            'foreignKey' => 'task_id',
+        $this->belongsTo('User', [
+            'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Subuser', [
-            'foreignKey' => 'subuser_id',
-            'joinType' => 'INNER'
+        $this->hasMany('Answer', [
+            'foreignKey' => 'subuser_id'
         ]);
     }
 
@@ -53,22 +52,8 @@ class AnswerTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('issued')
-            ->requirePresence('issued', 'create')
-            ->notEmpty('issued');
-
-        $validator
-            ->dateTime('loaded')
-            ->allowEmpty('loaded');
-
-        $validator
-            ->boolean('enabled')
-            ->requirePresence('enabled', 'create')
-            ->notEmpty('enabled');
-
-        $validator
-            ->requirePresence('uri', 'create')
-            ->notEmpty('uri');
+            ->requirePresence('nick', 'create')
+            ->notEmpty('nick');
 
         return $validator;
     }
@@ -82,8 +67,7 @@ class AnswerTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['task_id'], 'Task'));
-        $rules->add($rules->existsIn(['subuser_id'], 'Subuser'));
+        $rules->add($rules->existsIn(['user_id'], 'User'));
         return $rules;
     }
 }

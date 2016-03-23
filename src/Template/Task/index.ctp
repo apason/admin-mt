@@ -18,6 +18,7 @@
                 <th><?= $this->Paginator->sort('loaded') ?></th>
                 <th><?= $this->Paginator->sort('enabled') ?></th>
                 <th><?= $this->Paginator->sort('category_id') ?></th>
+                <th><?= $this->Paginator->sort('info') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,6 +30,7 @@
                 <td><?= h($task->loaded) ?></td>
                 <td><?= h($task->enabled) ?></td>
                 <td><?= $task->has('category') ? $this->Html->link($task->category->name, ['controller' => 'Category', 'action' => 'view', $task->category->id]) : '' ?></td>
+                <td><?= h($task->info) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $task->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $task->id]) ?>

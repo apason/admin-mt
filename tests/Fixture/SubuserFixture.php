@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * UserFixture
+ * SubuserFixture
  *
  */
-class UserFixture extends TestFixture
+class SubuserFixture extends TestFixture
 {
 
     /**
@@ -15,7 +15,7 @@ class UserFixture extends TestFixture
      *
      * @var string
      */
-    public $table = 'user';
+    public $table = 'subuser';
 
     /**
      * Fields
@@ -25,12 +25,14 @@ class UserFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'email' => ['type' => 'string', 'length' => 60, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'password' => ['type' => 'string', 'length' => 128, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'create_time' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'nick' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'user_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        '_indexes' => [
+            'user_id' => ['type' => 'index', 'columns' => ['user_id'], 'length' => []],
+        ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'subuser_ibfk_1' => ['type' => 'foreign', 'columns' => ['user_id'], 'references' => ['user', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -47,10 +49,8 @@ class UserFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'email' => 'Lorem ipsum dolor sit amet',
-            'password' => 'Lorem ipsum dolor sit amet',
-            'enabled' => 1,
-            'create_time' => '2016-03-23 08:32:50'
+            'nick' => 'Lorem ipsum dolor sit amet',
+            'user_id' => 1
         ],
     ];
 }

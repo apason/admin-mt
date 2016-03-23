@@ -19,7 +19,7 @@ class AnswerController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Task', 'User']
+            'contain' => ['Task', 'Subuser']
         ];
         $answer = $this->paginate($this->Answer);
 
@@ -37,7 +37,7 @@ class AnswerController extends AppController
     public function view($id = null)
     {
         $answer = $this->Answer->get($id, [
-            'contain' => ['Task', 'User']
+            'contain' => ['Task', 'Subuser']
         ]);
 
         $this->set('answer', $answer);
@@ -62,8 +62,8 @@ class AnswerController extends AppController
             }
         }
         $task = $this->Answer->Task->find('list', ['limit' => 200]);
-        $user = $this->Answer->User->find('list', ['limit' => 200]);
-        $this->set(compact('answer', 'task', 'user'));
+        $subuser = $this->Answer->Subuser->find('list', ['limit' => 200]);
+        $this->set(compact('answer', 'task', 'subuser'));
         $this->set('_serialize', ['answer']);
     }
 
@@ -89,8 +89,8 @@ class AnswerController extends AppController
             }
         }
         $task = $this->Answer->Task->find('list', ['limit' => 200]);
-        $user = $this->Answer->User->find('list', ['limit' => 200]);
-        $this->set(compact('answer', 'task', 'user'));
+        $subuser = $this->Answer->Subuser->find('list', ['limit' => 200]);
+        $this->set(compact('answer', 'task', 'subuser'));
         $this->set('_serialize', ['answer']);
     }
 

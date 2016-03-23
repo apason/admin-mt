@@ -1,47 +1,35 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Task'), ['action' => 'edit', $task->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Task'), ['action' => 'delete', $task->id], ['confirm' => __('Are you sure you want to delete # {0}?', $task->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Task'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Task'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Category'), ['controller' => 'Category', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Category'), ['controller' => 'Category', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Edit Subuser'), ['action' => 'edit', $subuser->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Subuser'), ['action' => 'delete', $subuser->id], ['confirm' => __('Are you sure you want to delete # {0}?', $subuser->id)]) ?> </li>
+        <li><?= $this->Html->link(__('List Subuser'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Subuser'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List User'), ['controller' => 'User', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'User', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Answer'), ['controller' => 'Answer', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Answer'), ['controller' => 'Answer', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="task view large-9 medium-8 columns content">
-    <h3><?= h($task->id) ?></h3>
+<div class="subuser view large-9 medium-8 columns content">
+    <h3><?= h($subuser->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th><?= __('Uri') ?></th>
-            <td><?= h($task->uri) ?></td>
+            <th><?= __('Nick') ?></th>
+            <td><?= h($subuser->nick) ?></td>
         </tr>
         <tr>
-            <th><?= __('Category') ?></th>
-            <td><?= $task->has('category') ? $this->Html->link($task->category->name, ['controller' => 'Category', 'action' => 'view', $task->category->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Info') ?></th>
-            <td><?= h($task->info) ?></td>
+            <th><?= __('User') ?></th>
+            <td><?= $subuser->has('user') ? $this->Html->link($subuser->user->id, ['controller' => 'User', 'action' => 'view', $subuser->user->id]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($task->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Loaded') ?></th>
-            <td><?= h($task->loaded) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Enabled') ?></th>
-            <td><?= $task->enabled ? __('Yes') : __('No'); ?></td>
+            <td><?= $this->Number->format($subuser->id) ?></td>
         </tr>
     </table>
     <div class="related">
         <h4><?= __('Related Answer') ?></h4>
-        <?php if (!empty($task->answer)): ?>
+        <?php if (!empty($subuser->answer)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
@@ -53,7 +41,7 @@
                 <th><?= __('Uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($task->answer as $answer): ?>
+            <?php foreach ($subuser->answer as $answer): ?>
             <tr>
                 <td><?= h($answer->id) ?></td>
                 <td><?= h($answer->issued) ?></td>

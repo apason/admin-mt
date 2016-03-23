@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\TaskTable;
+use App\Model\Table\SubuserTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\TaskTable Test Case
+ * App\Model\Table\SubuserTable Test Case
  */
-class TaskTableTest extends TestCase
+class SubuserTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\TaskTable
+     * @var \App\Model\Table\SubuserTable
      */
-    public $Task;
+    public $Subuser;
 
     /**
      * Fixtures
@@ -24,11 +24,11 @@ class TaskTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.task',
-        'app.category',
-        'app.answer',
         'app.subuser',
-        'app.user'
+        'app.user',
+        'app.answer',
+        'app.task',
+        'app.category'
     ];
 
     /**
@@ -39,8 +39,8 @@ class TaskTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Task') ? [] : ['className' => 'App\Model\Table\TaskTable'];
-        $this->Task = TableRegistry::get('Task', $config);
+        $config = TableRegistry::exists('Subuser') ? [] : ['className' => 'App\Model\Table\SubuserTable'];
+        $this->Subuser = TableRegistry::get('Subuser', $config);
     }
 
     /**
@@ -50,7 +50,7 @@ class TaskTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Task);
+        unset($this->Subuser);
 
         parent::tearDown();
     }

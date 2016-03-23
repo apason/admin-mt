@@ -7,8 +7,8 @@
         <li><?= $this->Html->link(__('New Answer'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Task'), ['controller' => 'Task', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Task'), ['controller' => 'Task', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List User'), ['controller' => 'User', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'User', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Subuser'), ['controller' => 'Subuser', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Subuser'), ['controller' => 'Subuser', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="answer view large-9 medium-8 columns content">
@@ -19,8 +19,8 @@
             <td><?= $answer->has('task') ? $this->Html->link($answer->task->id, ['controller' => 'Task', 'action' => 'view', $answer->task->id]) : '' ?></td>
         </tr>
         <tr>
-            <th><?= __('User') ?></th>
-            <td><?= $answer->has('user') ? $this->Html->link($answer->user->id, ['controller' => 'User', 'action' => 'view', $answer->user->id]) : '' ?></td>
+            <th><?= __('Subuser') ?></th>
+            <td><?= $answer->has('subuser') ? $this->Html->link($answer->subuser->id, ['controller' => 'Subuser', 'action' => 'view', $answer->subuser->id]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Uri') ?></th>

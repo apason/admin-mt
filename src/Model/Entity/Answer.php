@@ -12,8 +12,8 @@ use Cake\ORM\Entity;
  * @property bool $enabled
  * @property int $task_id
  * @property \App\Model\Entity\Task $task
- * @property int $user_id
- * @property \App\Model\Entity\User $user
+ * @property int $subuser_id
+ * @property \App\Model\Entity\Subuser $subuser
  * @property string $uri
  */
 class Answer extends Entity

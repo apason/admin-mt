@@ -17,6 +17,7 @@ class UserControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.user',
+        'app.subuser',
         'app.answer',
         'app.task',
         'app.category'

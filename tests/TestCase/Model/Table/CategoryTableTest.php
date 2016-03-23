@@ -26,7 +26,9 @@ class CategoryTableTest extends TestCase
     public $fixtures = [
         'app.category',
         'app.task',
-        'app.answer'
+        'app.answer',
+        'app.subuser',
+        'app.user'
     ];
 
     /**

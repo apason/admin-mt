@@ -35,6 +35,7 @@
                 <th><?= __('Loaded') ?></th>
                 <th><?= __('Enabled') ?></th>
                 <th><?= __('Category Id') ?></th>
+                <th><?= __('Info') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($category->task as $task): ?>
@@ -44,6 +45,7 @@
                 <td><?= h($task->loaded) ?></td>
                 <td><?= h($task->enabled) ?></td>
                 <td><?= h($task->category_id) ?></td>
+                <td><?= h($task->info) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Task', 'action' => 'view', $task->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Task', 'action' => 'edit', $task->id]) ?>

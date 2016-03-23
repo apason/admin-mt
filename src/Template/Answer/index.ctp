@@ -4,8 +4,8 @@
         <li><?= $this->Html->link(__('New Answer'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Task'), ['controller' => 'Task', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Task'), ['controller' => 'Task', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List User'), ['controller' => 'User', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'User', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Subuser'), ['controller' => 'Subuser', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Subuser'), ['controller' => 'Subuser', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="answer index large-9 medium-8 columns content">
@@ -18,7 +18,7 @@
                 <th><?= $this->Paginator->sort('loaded') ?></th>
                 <th><?= $this->Paginator->sort('enabled') ?></th>
                 <th><?= $this->Paginator->sort('task_id') ?></th>
-                <th><?= $this->Paginator->sort('user_id') ?></th>
+                <th><?= $this->Paginator->sort('subuser_id') ?></th>
                 <th><?= $this->Paginator->sort('uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -31,7 +31,7 @@
                 <td><?= h($answer->loaded) ?></td>
                 <td><?= h($answer->enabled) ?></td>
                 <td><?= $answer->has('task') ? $this->Html->link($answer->task->id, ['controller' => 'Task', 'action' => 'view', $answer->task->id]) : '' ?></td>
-                <td><?= $answer->has('user') ? $this->Html->link($answer->user->id, ['controller' => 'User', 'action' => 'view', $answer->user->id]) : '' ?></td>
+                <td><?= $answer->has('subuser') ? $this->Html->link($answer->subuser->id, ['controller' => 'Subuser', 'action' => 'view', $answer->subuser->id]) : '' ?></td>
                 <td><?= h($answer->uri) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $answer->id]) ?>

@@ -7,11 +7,11 @@ use Cake\ORM\Entity;
  * User Entity.
  *
  * @property int $id
+ * @property string $email
  * @property string $password
  * @property bool $enabled
- * @property string $email
  * @property \Cake\I18n\Time $create_time
- * @property \App\Model\Entity\Answer[] $answer
+ * @property \App\Model\Entity\Subuser[] $subuser
  */
 class User extends Entity
 {

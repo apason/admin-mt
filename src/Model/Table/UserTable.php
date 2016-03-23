@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
 /**
  * User Model
  *
- * @property \Cake\ORM\Association\HasMany $Answer
+ * @property \Cake\ORM\Association\HasMany $Subuser
  */
 class UserTable extends Table
 {
@@ -29,7 +29,7 @@ class UserTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->hasMany('Answer', [
+        $this->hasMany('Subuser', [
             'foreignKey' => 'user_id'
         ]);
     }
@@ -47,6 +47,11 @@ class UserTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
+
+        $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
@@ -56,12 +61,9 @@ class UserTable extends Table
             ->notEmpty('enabled');
 
         $validator
-            ->email('email')
-            ->allowEmpty('email');
-
-        $validator
             ->dateTime('create_time')
-            ->allowEmpty('create_time');
+            ->requirePresence('create_time', 'create')
+            ->notEmpty('create_time');
 
         return $validator;
     }

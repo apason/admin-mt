@@ -4,18 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Task Entity.
+ * Subuser Entity.
  *
  * @property int $id
- * @property string $uri
- * @property \Cake\I18n\Time $loaded
- * @property bool $enabled
- * @property int $category_id
- * @property \App\Model\Entity\Category $category
- * @property string $info
+ * @property string $nick
+ * @property int $user_id
+ * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Answer[] $answer
  */
-class Task extends Entity
+class Subuser extends Entity
 {
 
     /**

@@ -25,6 +25,7 @@ class UserTableTest extends TestCase
      */
     public $fixtures = [
         'app.user',
+        'app.subuser',
         'app.answer',
         'app.task',
         'app.category'

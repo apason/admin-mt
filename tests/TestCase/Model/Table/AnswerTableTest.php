@@ -27,6 +27,7 @@ class AnswerTableTest extends TestCase
         'app.answer',
         'app.task',
         'app.category',
+        'app.subuser',
         'app.user'
     ];
 

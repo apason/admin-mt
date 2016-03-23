@@ -52,16 +52,22 @@ class TaskTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('uri');
+            ->requirePresence('uri', 'create')
+            ->notEmpty('uri');
 
         $validator
             ->dateTime('loaded')
-            ->allowEmpty('loaded');
+            ->requirePresence('loaded', 'create')
+            ->notEmpty('loaded');
 
         $validator
             ->boolean('enabled')
             ->requirePresence('enabled', 'create')
             ->notEmpty('enabled');
+
+        $validator
+            ->requirePresence('info', 'create')
+            ->notEmpty('info');
 
         return $validator;
     }
