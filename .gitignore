@@ -2,4 +2,4 @@
 # /config/app.php
 /tmp/*
 /logs/*
-composer.lock
+/config/credentials.php
