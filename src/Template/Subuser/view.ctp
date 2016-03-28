@@ -38,7 +38,6 @@
                 <th><?= __('Enabled') ?></th>
                 <th><?= __('Task Id') ?></th>
                 <th><?= __('Subuser Id') ?></th>
-                <th><?= __('Uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($subuser->answer as $answer): ?>
@@ -49,7 +48,6 @@
                 <td><?= h($answer->enabled) ?></td>
                 <td><?= h($answer->task_id) ?></td>
                 <td><?= h($answer->subuser_id) ?></td>
-                <td><?= h($answer->uri) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Answer', 'action' => 'view', $answer->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Answer', 'action' => 'edit', $answer->id]) ?>

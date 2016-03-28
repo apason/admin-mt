@@ -50,10 +50,6 @@ class CategoryTable extends Table
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
-        $validator
-            ->requirePresence('bg_uri', 'create')
-            ->notEmpty('bg_uri');
-
         return $validator;
     }
 }

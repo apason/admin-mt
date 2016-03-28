@@ -14,7 +14,6 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('uri') ?></th>
                 <th><?= $this->Paginator->sort('loaded') ?></th>
                 <th><?= $this->Paginator->sort('enabled') ?></th>
                 <th><?= $this->Paginator->sort('category_id') ?></th>
@@ -26,7 +25,6 @@
             <?php foreach ($task as $task): ?>
             <tr>
                 <td><?= $this->Number->format($task->id) ?></td>
-                <td><?= h($task->uri) ?></td>
                 <td><?= h($task->loaded) ?></td>
                 <td><?= h($task->enabled) ?></td>
                 <td><?= $task->has('category') ? $this->Html->link($task->category->name, ['controller' => 'Category', 'action' => 'view', $task->category->id]) : '' ?></td>

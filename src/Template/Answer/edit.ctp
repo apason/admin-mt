@@ -24,7 +24,6 @@
             echo $this->Form->input('enabled');
             echo $this->Form->input('task_id', ['options' => $task]);
             echo $this->Form->input('subuser_id', ['options' => $subuser]);
-            echo $this->Form->input('uri');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

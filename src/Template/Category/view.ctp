@@ -17,10 +17,6 @@
             <td><?= h($category->name) ?></td>
         </tr>
         <tr>
-            <th><?= __('Bg Uri') ?></th>
-            <td><?= h($category->bg_uri) ?></td>
-        </tr>
-        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($category->id) ?></td>
         </tr>
@@ -31,7 +27,6 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Uri') ?></th>
                 <th><?= __('Loaded') ?></th>
                 <th><?= __('Enabled') ?></th>
                 <th><?= __('Category Id') ?></th>
@@ -41,7 +36,6 @@
             <?php foreach ($category->task as $task): ?>
             <tr>
                 <td><?= h($task->id) ?></td>
-                <td><?= h($task->uri) ?></td>
                 <td><?= h($task->loaded) ?></td>
                 <td><?= h($task->enabled) ?></td>
                 <td><?= h($task->category_id) ?></td>

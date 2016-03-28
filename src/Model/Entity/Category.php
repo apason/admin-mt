@@ -8,7 +8,6 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property string $bg_uri
  * @property \App\Model\Entity\Task[] $task
  */
 class Category extends Entity
