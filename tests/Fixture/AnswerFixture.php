@@ -30,6 +30,7 @@ class AnswerFixture extends TestFixture
         'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'task_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'subuser_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'uri' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'task_id' => ['type' => 'index', 'columns' => ['task_id'], 'length' => []],
             'subuser_id' => ['type' => 'index', 'columns' => ['subuser_id'], 'length' => []],
@@ -54,11 +55,12 @@ class AnswerFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'issued' => '2016-03-28 07:59:32',
-            'loaded' => '2016-03-28 07:59:32',
+            'issued' => '2016-03-23 08:33:00',
+            'loaded' => '2016-03-23 08:33:00',
             'enabled' => 1,
             'task_id' => 1,
-            'subuser_id' => 1
+            'subuser_id' => 1,
+            'uri' => 'Lorem ipsum dolor sit amet'
         ],
     ];
 }

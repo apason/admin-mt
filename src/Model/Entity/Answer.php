@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Task $task
  * @property int $subuser_id
  * @property \App\Model\Entity\Subuser $subuser
+ * @property string $uri
  */
 class Answer extends Entity
 {

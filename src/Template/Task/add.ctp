@@ -13,7 +13,8 @@
     <fieldset>
         <legend><?= __('Add Task') ?></legend>
         <?php
-            echo $this->Form->input('loaded', ['empty' => true]);
+            echo $this->Form->input('uri');
+            echo $this->Form->input('loaded');
             echo $this->Form->input('enabled');
             echo $this->Form->input('category_id', ['options' => $category]);
             echo $this->Form->input('info');

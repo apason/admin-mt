@@ -7,6 +7,7 @@ use Cake\ORM\Entity;
  * Task Entity.
  *
  * @property int $id
+ * @property string $uri
  * @property \Cake\I18n\Time $loaded
  * @property bool $enabled
  * @property int $category_id

@@ -23,6 +23,10 @@
             <td><?= $answer->has('subuser') ? $this->Html->link($answer->subuser->id, ['controller' => 'Subuser', 'action' => 'view', $answer->subuser->id]) : '' ?></td>
         </tr>
         <tr>
+            <th><?= __('Uri') ?></th>
+            <td><?= h($answer->uri) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($answer->id) ?></td>
         </tr>

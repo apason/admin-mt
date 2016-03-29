@@ -66,6 +66,10 @@ class AnswerTable extends Table
             ->requirePresence('enabled', 'create')
             ->notEmpty('enabled');
 
+        $validator
+            ->requirePresence('uri', 'create')
+            ->notEmpty('uri');
+
         return $validator;
     }
 

@@ -12,6 +12,7 @@
         <legend><?= __('Add Category') ?></legend>
         <?php
             echo $this->Form->input('name');
+            echo $this->Form->input('bg_uri');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
