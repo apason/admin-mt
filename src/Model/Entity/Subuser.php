@@ -7,9 +7,11 @@ use Cake\ORM\Entity;
  * Subuser Entity.
  *
  * @property int $id
- * @property string $nick
  * @property int $user_id
  * @property \App\Model\Entity\User $user
+ * @property \Cake\I18n\Time $created
+ * @property string $nick
+ * @property string $avatar_url
  * @property \App\Model\Entity\Answer[] $answer
  */
 class Subuser extends Entity

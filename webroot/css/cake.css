@@ -427,12 +427,18 @@ table thead tr {
     border-bottom: 1px solid #1798A5;
 }
 
+/* Add overflow: hidden to td and th. */
 table tr th {
     padding: 0.5625rem 0.625rem;
     font-size: 0.875rem;
     color: #1798A5;
     text-align: left;
     border-bottom: 2px solid #1798A5;
+    overflow: hidden;
+}
+
+table tr td {
+  overflow: hidden;
 }
 
 table tr:nth-of-type(even) {
@@ -482,7 +488,7 @@ div.message {
     height: 50px;
     line-height: 2.5em;
     box-radius: 5px;
-    
+
 }
 
 div.message:before {

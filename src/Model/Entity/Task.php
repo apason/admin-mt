@@ -7,11 +7,15 @@ use Cake\ORM\Entity;
  * Task Entity.
  *
  * @property int $id
- * @property \Cake\I18n\Time $loaded
- * @property bool $enabled
  * @property int $category_id
  * @property \App\Model\Entity\Category $category
+ * @property \Cake\I18n\Time $created
+ * @property bool $uploaded
+ * @property bool $enabled
+ * @property string $name
  * @property string $info
+ * @property string $uri
+ * @property string $icon_uri
  * @property \App\Model\Entity\Answer[] $answer
  */
 class Task extends Entity

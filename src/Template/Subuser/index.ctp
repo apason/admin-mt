@@ -14,8 +14,10 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('nick') ?></th>
                 <th><?= $this->Paginator->sort('user_id') ?></th>
+                <th><?= $this->Paginator->sort('created') ?></th>
+                <th><?= $this->Paginator->sort('nick') ?></th>
+                <th><?= $this->Paginator->sort('avatar_url') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -23,8 +25,10 @@
             <?php foreach ($subuser as $subuser): ?>
             <tr>
                 <td><?= $this->Number->format($subuser->id) ?></td>
-                <td><?= h($subuser->nick) ?></td>
                 <td><?= $subuser->has('user') ? $this->Html->link($subuser->user->id, ['controller' => 'User', 'action' => 'view', $subuser->user->id]) : '' ?></td>
+                <td><?= h($subuser->created) ?></td>
+                <td><?= h($subuser->nick) ?></td>
+                <td><?= h($subuser->avatar_url) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $subuser->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $subuser->id]) ?>

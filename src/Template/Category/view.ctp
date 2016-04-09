@@ -17,8 +17,28 @@
             <td><?= h($category->name) ?></td>
         </tr>
         <tr>
+            <th><?= __('Bg Uri') ?></th>
+            <td><?= h($category->bg_uri) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Icon Uri') ?></th>
+            <td><?= h($category->icon_uri) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($category->id) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Created') ?></th>
+            <td><?= h($category->created) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Uploaded') ?></th>
+            <td><?= $category->uploaded ? __('Yes') : __('No'); ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Enabled') ?></th>
+            <td><?= $category->enabled ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
     <div class="related">
@@ -27,19 +47,27 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Loaded') ?></th>
-                <th><?= __('Enabled') ?></th>
                 <th><?= __('Category Id') ?></th>
+                <th><?= __('Created') ?></th>
+                <th><?= __('Uploaded') ?></th>
+                <th><?= __('Enabled') ?></th>
+                <th><?= __('Name') ?></th>
                 <th><?= __('Info') ?></th>
+                <th><?= __('Uri') ?></th>
+                <th><?= __('Icon Uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($category->task as $task): ?>
             <tr>
                 <td><?= h($task->id) ?></td>
-                <td><?= h($task->loaded) ?></td>
-                <td><?= h($task->enabled) ?></td>
                 <td><?= h($task->category_id) ?></td>
+                <td><?= h($task->created) ?></td>
+                <td><?= h($task->uploaded) ?></td>
+                <td><?= h($task->enabled) ?></td>
+                <td><?= h($task->name) ?></td>
                 <td><?= h($task->info) ?></td>
+                <td><?= h($task->uri) ?></td>
+                <td><?= h($task->icon_uri) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Task', 'action' => 'view', $task->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Task', 'action' => 'edit', $task->id]) ?>

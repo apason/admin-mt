@@ -15,16 +15,24 @@
     <h3><?= h($subuser->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th><?= __('Nick') ?></th>
-            <td><?= h($subuser->nick) ?></td>
-        </tr>
-        <tr>
             <th><?= __('User') ?></th>
             <td><?= $subuser->has('user') ? $this->Html->link($subuser->user->id, ['controller' => 'User', 'action' => 'view', $subuser->user->id]) : '' ?></td>
         </tr>
         <tr>
+            <th><?= __('Nick') ?></th>
+            <td><?= h($subuser->nick) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Avatar Url') ?></th>
+            <td><?= h($subuser->avatar_url) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($subuser->id) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Created') ?></th>
+            <td><?= h($subuser->created) ?></td>
         </tr>
     </table>
     <div class="related">
@@ -33,21 +41,23 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Issued') ?></th>
-                <th><?= __('Loaded') ?></th>
-                <th><?= __('Enabled') ?></th>
                 <th><?= __('Task Id') ?></th>
                 <th><?= __('Subuser Id') ?></th>
+                <th><?= __('Created') ?></th>
+                <th><?= __('Uploaded') ?></th>
+                <th><?= __('Enabled') ?></th>
+                <th><?= __('Uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($subuser->answer as $answer): ?>
             <tr>
                 <td><?= h($answer->id) ?></td>
-                <td><?= h($answer->issued) ?></td>
-                <td><?= h($answer->loaded) ?></td>
-                <td><?= h($answer->enabled) ?></td>
                 <td><?= h($answer->task_id) ?></td>
                 <td><?= h($answer->subuser_id) ?></td>
+                <td><?= h($answer->created) ?></td>
+                <td><?= h($answer->uploaded) ?></td>
+                <td><?= h($answer->enabled) ?></td>
+                <td><?= h($answer->uri) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Answer', 'action' => 'view', $answer->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Answer', 'action' => 'edit', $answer->id]) ?>

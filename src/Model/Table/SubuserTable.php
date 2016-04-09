@@ -30,6 +30,8 @@ class SubuserTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('User', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
@@ -54,6 +56,9 @@ class SubuserTable extends Table
         $validator
             ->requirePresence('nick', 'create')
             ->notEmpty('nick');
+
+        $validator
+            ->allowEmpty('avatar_url');
 
         return $validator;
     }

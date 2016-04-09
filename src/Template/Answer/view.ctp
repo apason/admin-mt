@@ -23,16 +23,20 @@
             <td><?= $answer->has('subuser') ? $this->Html->link($answer->subuser->id, ['controller' => 'Subuser', 'action' => 'view', $answer->subuser->id]) : '' ?></td>
         </tr>
         <tr>
+            <th><?= __('Uri') ?></th>
+            <td><?= h($answer->uri) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($answer->id) ?></td>
         </tr>
         <tr>
-            <th><?= __('Issued') ?></th>
-            <td><?= h($answer->issued) ?></td>
+            <th><?= __('Created') ?></th>
+            <td><?= h($answer->created) ?></td>
         </tr>
         <tr>
-            <th><?= __('Loaded') ?></th>
-            <td><?= h($answer->loaded) ?></td>
+            <th><?= __('Uploaded') ?></th>
+            <td><?= $answer->uploaded ? __('Yes') : __('No'); ?></td>
         </tr>
         <tr>
             <th><?= __('Enabled') ?></th>

@@ -25,10 +25,14 @@ class TaskFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'loaded' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'category_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'info' => ['type' => 'string', 'length' => 1000, 'null' => false, 'default' => '', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'uploaded' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'info' => ['type' => 'string', 'length' => 10000, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'uri' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'icon_uri' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'category_id' => ['type' => 'index', 'columns' => ['category_id'], 'length' => []],
         ],
@@ -51,10 +55,14 @@ class TaskFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'loaded' => '2016-03-28 10:35:06',
-            'enabled' => 1,
             'category_id' => 1,
-            'info' => 'Lorem ipsum dolor sit amet'
+            'created' => '2016-04-02 10:12:06',
+            'uploaded' => 1,
+            'enabled' => 1,
+            'name' => 'Lorem ipsum dolor sit amet',
+            'info' => 'Lorem ipsum dolor sit amet',
+            'uri' => 'Lorem ipsum dolor sit amet',
+            'icon_uri' => 'Lorem ipsum dolor sit amet'
         ],
     ];
 }

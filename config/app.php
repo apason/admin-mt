@@ -64,7 +64,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', 'b8c3db6c3cbab9741f5b16d05b835ab92b4b7948a2035a34b302c310b0b6083e'),
+        'salt' => env('SECURITY_SALT', $mt_security_salt),
     ],
 
     /**
@@ -228,7 +228,7 @@ return [
             //'port' => 'non_standard_port_number',
             'username' => $mt_mysql_user,
             'password' => $mt_mysql_password,
-            'database' => $mt_mysql_db_bame,
+            'database' => $mt_mysql_db_name,
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
@@ -340,4 +340,13 @@ return [
     'Session' => [
         'defaults' => 'php',
     ],
+
+    'AwsS3Settings' => [
+      'accessKey' => $mt_aws_access_key,
+      'secretAccessKey' => $mt_aws_secret_access_key,
+      'categoryBucketName' => $mt_aws_s3_category_bucket_name,
+      'taskBucketName' => $mt_aws_s3_task_bucket_name,
+      'answerBucketName' => $mt_aws_s3_answer_bucket_name,
+      'graphicsBucketName' => $mt_aws_s3_graphics_bucket_name,
+  ]
 ];

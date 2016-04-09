@@ -30,6 +30,8 @@ class AnswerTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('Task', [
             'foreignKey' => 'task_id',
             'joinType' => 'INNER'
@@ -53,18 +55,17 @@ class AnswerTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('issued')
-            ->requirePresence('issued', 'create')
-            ->notEmpty('issued');
-
-        $validator
-            ->dateTime('loaded')
-            ->allowEmpty('loaded');
+            ->boolean('uploaded')
+            ->requirePresence('uploaded', 'create')
+            ->notEmpty('uploaded');
 
         $validator
             ->boolean('enabled')
             ->requirePresence('enabled', 'create')
             ->notEmpty('enabled');
+
+        $validator
+            ->allowEmpty('uri');
 
         return $validator;
     }

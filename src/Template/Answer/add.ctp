@@ -13,11 +13,11 @@
     <fieldset>
         <legend><?= __('Add Answer') ?></legend>
         <?php
-            echo $this->Form->input('issued');
-            echo $this->Form->input('loaded', ['empty' => true]);
-            echo $this->Form->input('enabled');
             echo $this->Form->input('task_id', ['options' => $task]);
             echo $this->Form->input('subuser_id', ['options' => $subuser]);
+            echo $this->Form->input('uploaded');
+            echo $this->Form->input('enabled');
+            echo $this->Form->input('uri');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

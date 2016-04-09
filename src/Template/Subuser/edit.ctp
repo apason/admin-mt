@@ -19,8 +19,9 @@
     <fieldset>
         <legend><?= __('Edit Subuser') ?></legend>
         <?php
-            echo $this->Form->input('nick');
             echo $this->Form->input('user_id', ['options' => $user]);
+            echo $this->Form->input('nick');
+            echo $this->Form->input('avatar_url');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

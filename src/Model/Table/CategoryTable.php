@@ -29,6 +29,8 @@ class CategoryTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->hasMany('Task', [
             'foreignKey' => 'category_id'
         ]);
@@ -47,8 +49,24 @@ class CategoryTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->boolean('uploaded')
+            ->requirePresence('uploaded', 'create')
+            ->notEmpty('uploaded');
+
+        $validator
+            ->boolean('enabled')
+            ->requirePresence('enabled', 'create')
+            ->notEmpty('enabled');
+
+        $validator
             ->requirePresence('name', 'create')
             ->notEmpty('name');
+
+        $validator
+            ->allowEmpty('bg_uri');
+
+        $validator
+            ->allowEmpty('icon_uri');
 
         return $validator;
     }

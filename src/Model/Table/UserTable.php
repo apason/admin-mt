@@ -29,6 +29,8 @@ class UserTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->hasMany('Subuser', [
             'foreignKey' => 'user_id'
         ]);
@@ -47,6 +49,11 @@ class UserTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->boolean('enabled')
+            ->requirePresence('enabled', 'create')
+            ->notEmpty('enabled');
+
+        $validator
             ->email('email')
             ->requirePresence('email', 'create')
             ->notEmpty('email');
@@ -54,16 +61,6 @@ class UserTable extends Table
         $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
-
-        $validator
-            ->boolean('enabled')
-            ->requirePresence('enabled', 'create')
-            ->notEmpty('enabled');
-
-        $validator
-            ->dateTime('create_time')
-            ->requirePresence('create_time', 'create')
-            ->notEmpty('create_time');
 
         return $validator;
     }

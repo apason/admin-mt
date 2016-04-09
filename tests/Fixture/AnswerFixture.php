@@ -25,11 +25,12 @@ class AnswerFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'issued' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'loaded' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'task_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'subuser_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'uploaded' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'uri' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'task_id' => ['type' => 'index', 'columns' => ['task_id'], 'length' => []],
             'subuser_id' => ['type' => 'index', 'columns' => ['subuser_id'], 'length' => []],
@@ -54,11 +55,12 @@ class AnswerFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'issued' => '2016-03-28 07:59:32',
-            'loaded' => '2016-03-28 07:59:32',
-            'enabled' => 1,
             'task_id' => 1,
-            'subuser_id' => 1
+            'subuser_id' => 1,
+            'created' => '2016-04-02 10:12:14',
+            'uploaded' => 1,
+            'enabled' => 1,
+            'uri' => 'Lorem ipsum dolor sit amet'
         ],
     ];
 }

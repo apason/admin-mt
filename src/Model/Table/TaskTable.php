@@ -30,6 +30,8 @@ class TaskTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('Category', [
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
@@ -52,8 +54,9 @@ class TaskTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->dateTime('loaded')
-            ->allowEmpty('loaded');
+            ->boolean('uploaded')
+            ->requirePresence('uploaded', 'create')
+            ->notEmpty('uploaded');
 
         $validator
             ->boolean('enabled')
@@ -61,8 +64,17 @@ class TaskTable extends Table
             ->notEmpty('enabled');
 
         $validator
-            ->requirePresence('info', 'create')
-            ->notEmpty('info');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
+
+        $validator
+            ->allowEmpty('info');
+
+        $validator
+            ->allowEmpty('uri');
+
+        $validator
+            ->allowEmpty('icon_uri');
 
         return $validator;
     }

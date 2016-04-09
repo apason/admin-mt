@@ -25,8 +25,8 @@
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
-            <th><?= __('Create Time') ?></th>
-            <td><?= h($user->create_time) ?></td>
+            <th><?= __('Created') ?></th>
+            <td><?= h($user->created) ?></td>
         </tr>
         <tr>
             <th><?= __('Enabled') ?></th>
@@ -39,15 +39,19 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
-                <th><?= __('Nick') ?></th>
                 <th><?= __('User Id') ?></th>
+                <th><?= __('Created') ?></th>
+                <th><?= __('Nick') ?></th>
+                <th><?= __('Avatar Url') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->subuser as $subuser): ?>
             <tr>
                 <td><?= h($subuser->id) ?></td>
-                <td><?= h($subuser->nick) ?></td>
                 <td><?= h($subuser->user_id) ?></td>
+                <td><?= h($subuser->created) ?></td>
+                <td><?= h($subuser->nick) ?></td>
+                <td><?= h($subuser->avatar_url) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Subuser', 'action' => 'view', $subuser->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Subuser', 'action' => 'edit', $subuser->id]) ?>

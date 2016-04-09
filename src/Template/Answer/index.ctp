@@ -14,11 +14,12 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('issued') ?></th>
-                <th><?= $this->Paginator->sort('loaded') ?></th>
-                <th><?= $this->Paginator->sort('enabled') ?></th>
                 <th><?= $this->Paginator->sort('task_id') ?></th>
                 <th><?= $this->Paginator->sort('subuser_id') ?></th>
+                <th><?= $this->Paginator->sort('created') ?></th>
+                <th><?= $this->Paginator->sort('uploaded') ?></th>
+                <th><?= $this->Paginator->sort('enabled') ?></th>
+                <th><?= $this->Paginator->sort('uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -26,11 +27,12 @@
             <?php foreach ($answer as $answer): ?>
             <tr>
                 <td><?= $this->Number->format($answer->id) ?></td>
-                <td><?= h($answer->issued) ?></td>
-                <td><?= h($answer->loaded) ?></td>
-                <td><?= h($answer->enabled) ?></td>
                 <td><?= $answer->has('task') ? $this->Html->link($answer->task->id, ['controller' => 'Task', 'action' => 'view', $answer->task->id]) : '' ?></td>
                 <td><?= $answer->has('subuser') ? $this->Html->link($answer->subuser->id, ['controller' => 'Subuser', 'action' => 'view', $answer->subuser->id]) : '' ?></td>
+                <td><?= h($answer->created) ?></td>
+                <td><?= h($answer->uploaded) ?></td>
+                <td><?= h($answer->enabled) ?></td>
+                <td><?= h($answer->uri) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $answer->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $answer->id]) ?>
