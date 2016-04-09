@@ -7,7 +7,12 @@ use Cake\ORM\Entity;
  * Category Entity.
  *
  * @property int $id
+ * @property \Cake\I18n\Time $created
+ * @property bool $uploaded
+ * @property bool $enabled
  * @property string $name
+ * @property string $bg_uri
+ * @property string $icon_uri
  * @property \App\Model\Entity\Task[] $task
  */
 class Category extends Entity

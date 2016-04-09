@@ -7,13 +7,14 @@ use Cake\ORM\Entity;
  * Answer Entity.
  *
  * @property int $id
- * @property \Cake\I18n\Time $issued
- * @property \Cake\I18n\Time $loaded
- * @property bool $enabled
  * @property int $task_id
  * @property \App\Model\Entity\Task $task
  * @property int $subuser_id
  * @property \App\Model\Entity\Subuser $subuser
+ * @property \Cake\I18n\Time $created
+ * @property bool $uploaded
+ * @property bool $enabled
+ * @property string $uri
  */
 class Answer extends Entity
 {
