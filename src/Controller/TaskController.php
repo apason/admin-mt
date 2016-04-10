@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
+use Cake\Core\Configure;
 
 /**
  * Task Controller
@@ -54,9 +56,15 @@ class TaskController extends AppController
         $task = $this->Task->newEntity();
         if ($this->request->is('post')) {
             $task = $this->Task->patchEntity($task, $this->request->data);
+            $task->uploaded = false;
+            $task->enabled = false;
+            $task->created = new Time();
+            $task->uri = null;
+            $task->icon_uri = null;
             if ($this->Task->save($task)) {
+                $task_id = $task->id;
                 $this->Flash->success(__('The task has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit', $task->id]);
             } else {
                 $this->Flash->error(__('The task could not be saved. Please, try again.'));
             }
@@ -87,6 +95,25 @@ class TaskController extends AppController
                 $this->Flash->error(__('The task could not be saved. Please, try again.'));
             }
         }
+        $category = $this->Task->Category->find('list', ['limit' => 200]);
+        $this->set(compact('task', 'category'));
+        $this->set('_serialize', ['task']);
+
+        $this->set('taskBucketName', Configure::readOrFail('AwsS3Settings.taskBucketName'));
+        $this->set('graphicsBucketName', Configure::readOrFail('AwsS3Settings.graphicsBucketName'));
+        $this->set('awsAccessKey', Configure::readOrFail('AwsS3Settings.accessKey'));
+        $this->set('awsSecretAccessKey', Configure::readOrFail('AwsS3Settings.secretAccessKey'));
+    }
+
+    /*
+    * Method for uploading videos.
+    *
+    */
+    public function uploadVideo($id = null)
+    {
+        $task = $this->Task->get($id, [
+            'contain' => []
+        ]);
         $category = $this->Task->Category->find('list', ['limit' => 200]);
         $this->set(compact('task', 'category'));
         $this->set('_serialize', ['task']);
