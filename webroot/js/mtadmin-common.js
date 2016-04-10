@@ -13,7 +13,7 @@ function checkFileType(file, fileTypes) {
 
 // Makes an XMLHttpRequest to
 // /task/video_upload_completed/id.
-function taskVideoUploadCompleted(taskId) {
+function taskVideoUploadCompleted(taskId, videoUri) {
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/task/video_upload_completed/" + taskId, true);
   xhttp.send();
@@ -21,7 +21,7 @@ function taskVideoUploadCompleted(taskId) {
 
 // Makes an XMLHttpRequest to
 // /task/icon_upload_completed/id.
-function taskIconUploadCompleted(taskId) {
+function taskIconUploadCompleted(taskId, iconUri) {
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/task/icon_upload_completed/" + taskId, true);
   xhttp.send();
