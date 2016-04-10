@@ -1,18 +1,17 @@
 <script type="text/javascript" src="/js/mtadmin-common.js"></script>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
+        <li class="heading">Toiminnot</li>
+        <li><?= $this->Form->postLink('Poista tämä tehtävä',
                 ['action' => 'delete', $task->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $task->id)]
+                ['confirm' => __('Haluatko varmasti poistaa tehtävän # {0}?', $task->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Task'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Category'), ['controller' => 'Category', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Category'), ['controller' => 'Category', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Answer'), ['controller' => 'Answer', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Answer'), ['controller' => 'Answer', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link('Listaa tehtävät', ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link('Listaa kategoriat', ['controller' => 'Category', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link('Uusi kategoria', ['controller' => 'Category', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link('Listaa vastaukset', ['controller' => 'Answer', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link('Uusi vastaus', ['controller' => 'Answer', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="task form large-9 medium-8 columns content">
@@ -31,11 +30,6 @@
     </fieldset>
 
     <div id="task-video-player">
-    <?php if ($task->uri == null || $task->uri == ''): ?>
-      Tehtävävideota ei vielä ole lähetetty.
-    <?php else: ?>
-      Tehtävävideo on jo lähetetty. Videon URI on: <?php print $task->uri; ?>
-    <?php endif; ?>
     </div>
 
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.47.min.js"></script>
@@ -56,35 +50,40 @@
     </script>
 
     <div id="task-video-upload">
+      <div id="task-video-upload-results">
+        <?php if ($task->uri == null || $task->uri == ''): ?>
+          Tehtävävideota ei vielä ole lähetetty.
+        <?php else: ?>
+          Tehtävävideo on jo lähetetty. Videon URI on: <?php print $task->uri; ?>
+        <?php endif; ?>
+      </div>
       <input type="file" id="task-video-file-chooser" />
       <button type="button" id="task-video-upload-button">Lähetä video</button>
-      <div id="task-video-upload-results"></div>
       <script type="text/javascript">
         var taskVideoBucket = new AWS.S3({params: {Bucket: taskBucketName}});
         var taskVideoFileChooser = document.getElementById('task-video-file-chooser');
         var taskVideoUploadButton = document.getElementById('task-video-upload-button');
-        var taskVideoUploadResults = document.getElementById('task-video-upload-resulsts');
+        var taskVideoUploadResults = document.getElementById('task-video-upload-results');
         taskVideoUploadButton.addEventListener('click', function() {
           var videoFile = taskVideoFileChooser.files[0];
 
           if (videoFile) {
-            taskVideoUploadResults.innerHTML = '';
-
             // Is the file of the right type?
             if (!checkFileType(videoFile, new Array('video/mp4', 'video/webm', 'video/x-matroska'))) {
                 taskVideoUploadResults.innerHTML = "Virhe: Videotiedosto on väärää tyyppiä.";
                 return;
             }
 
-            var videoUploadFilename = generateTaskVideoFilename(taskId, videoFile.name);
+            var videoUploadFilename = generateTaskVideoFilename(taskId, videoFile);
             var videoParams = {Key: videoUploadFilename, ContentType: videoFile.type, Body: videoFile};
+            taskVideoUploadResults.innerHTML = 'Videota lähetetään. Odota hetki...';
             taskVideoBucket.upload(videoParams, function (err, data) {
               if (err) {
                   taskVideoUploadResults.innerHTML = 'Videon lähettämisessä tapahtui virhe: ' + err;
               } else {
                 taskVideoUploadResults.innerHTML = 'Video lähetettiin onnistuneesti.';
                 // Make an AJAX call to video_upload_completed/id.
-                taskVideoUploadCompleted(taskId);
+                // taskVideoUploadCompleted(taskId);
               }
             });
           } else {
@@ -95,17 +94,16 @@
     </div>
 
     <div id="task-icon">
-      <?php if ($task->icon_uri == null || $task->icon_uri == ''): ?>
-        Tehtävän kuvaketta ei vielä ole lähetetty.
-      <?php else: ?>
-        Tehtävän kuvake on jo lähetetty. Kuvakkeen URI on: <?php print $task->icon_uri; ?>
-      <?php endif; ?>
-    </div>
-
+      <div id="task-icon-upload-results">
+        <?php if ($task->icon_uri == null || $task->icon_uri == ''): ?>
+          Tehtävän kuvaketta ei vielä ole lähetetty.
+        <?php else: ?>
+          Tehtävän kuvake on jo lähetetty. Kuvakkeen URI on: <?php print $task->icon_uri; ?>
+        <?php endif; ?>
+      </div>
     <div id="task-icon-upload">
       <input type="file" id="task-icon-file-chooser" />
       <button type="button" id="task-icon-upload-button">Lähetä kuvake</button>
-      <div id="task-icon-upload-results"></div>
       <script type="text/javascript">
         var taskIconBucket = new AWS.S3({params: {Bucket: graphicsBucketName}});
         var taskIconFileChooser = document.getElementById('task-icon-file-chooser');
@@ -115,23 +113,22 @@
           var iconFile = taskIconFileChooser.files[0];
 
           if (iconFile) {
-            taskIconUploadResults.innerHTML = '';
-
             // Is the file of the right type?
             if (!checkFileType(iconFile, new Array('image/png'))) {
                 taskIconUploadResults.innerHTML = "Virhe: Kuvatiedosto on väärää tyyppiä.";
                 return;
             }
 
-            var iconUploadFilename = generateTaskVideoFilename(taskId, iconFile.name);
+            var iconUploadFilename = generateTaskIconFilename(taskId, iconFile);
             var iconParams = {Key: iconUploadFilename, ContentType: iconFile.type, Body: iconFile};
+            taskIconUploadResults.innerHTML = 'Kuvaketta lähetetään. Odota hetki...';
             taskIconBucket.upload(iconParams, function (err, data) {
               if (err) {
                   taskIconUploadResults.innerHTML = 'Kuvakkeen lähettämisessä tapahtui virhe: ' + err;
               } else {
                 taskIconUploadResults.innerHTML = 'Kuvake lähetettiin onnistuneesti.';
                 // Make an AJAX call to video_upload_completed/id.
-                taskIconUploadCompleted(taskId);
+                // taskIconUploadCompleted(taskId);
               }
             });
           } else {
@@ -140,6 +137,7 @@
         }, false);
       </script>
     </div>
-    <?= $this->Form->button(__('Submit')) ?>
+    </div>
+    <?= $this->Form->button('Tallenna muutokset') ?>
     <?= $this->Form->end() ?>
 </div>
