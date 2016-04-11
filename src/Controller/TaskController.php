@@ -137,4 +137,49 @@ class TaskController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function videoUploadCompleted($id = null, $video_uri = null) {
+      // Disable view rendering
+      $this->autoRender = false;
+
+      if ($id == null) {
+          return;
+      }
+      if ($video_uri == null) {
+        return;
+      }
+
+      // Update the video uri to the database.
+      // If both uri's have been set, set uploaded = true.
+      $task = $this->Task->get($id, [
+          'contain' => []
+      ]);
+      $task->uri = $video_uri;
+      if ($task->icon_uri != null && $task->icon_uri != '') {
+        $task->uploaded = true;
+      }
+      $this->Task->save($task);
+    }
+
+    public function iconUploadCompleted($id = null, $icon_uri = null) {
+      // Disable view rendering
+      $this->autoRender = false;
+
+      if ($id == null) {
+          return;
+      }
+      if ($icon_uri == null) {
+        return;
+      }
+
+      // Update the icon uri to the database.
+      $task = $this->Task->get($id, [
+          'contain' => []
+      ]);
+      $task->icon_uri = $icon_uri;
+      if ($task->uri != null && $task->uri != '') {
+        $task->uploaded = true;
+      }
+      $this->Task->save($task);
+    }
 }
