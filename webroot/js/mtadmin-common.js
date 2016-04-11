@@ -12,18 +12,18 @@ function checkFileType(file, fileTypes) {
 // Task-related helper functions
 
 // Makes an XMLHttpRequest to
-// /task/video_upload_completed/id.
+// /task/video_upload_completed/task_id/video_uri.
 function taskVideoUploadCompleted(taskId, videoUri) {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/task/video_upload_completed/" + taskId, true);
+  xhttp.open("GET", "/task/video_upload_completed/" + taskId + "/" + videoUri, true);
   xhttp.send();
 }
 
 // Makes an XMLHttpRequest to
-// /task/icon_upload_completed/id.
+// /task/icon_upload_completed/task_id/icon_uri.
 function taskIconUploadCompleted(taskId, iconUri) {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/task/icon_upload_completed/" + taskId, true);
+  xhttp.open("GET", "/task/icon_upload_completed/" + taskId + "/" + iconUri, true);
   xhttp.send();
 }
 
