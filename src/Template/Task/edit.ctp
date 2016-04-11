@@ -83,7 +83,7 @@
               } else {
                 taskVideoUploadResults.innerHTML = 'Video lähetettiin onnistuneesti.';
                 // Make an AJAX call to video_upload_completed/id.
-                // taskVideoUploadCompleted(taskId);
+                taskVideoUploadCompleted(taskId, videoUploadFilename);
               }
             });
           } else {
@@ -128,7 +128,7 @@
               } else {
                 taskIconUploadResults.innerHTML = 'Kuvake lähetettiin onnistuneesti.';
                 // Make an AJAX call to video_upload_completed/id.
-                // taskIconUploadCompleted(taskId);
+                taskIconUploadCompleted(taskId, iconUploadFilename);
               }
             });
           } else {
