@@ -344,7 +344,6 @@ return [
     'AwsS3Settings' => [
       'accessKey' => $mt_aws_access_key,
       'secretAccessKey' => $mt_aws_secret_access_key,
-      'categoryBucketName' => $mt_aws_s3_category_bucket_name,
       'taskBucketName' => $mt_aws_s3_task_bucket_name,
       'answerBucketName' => $mt_aws_s3_answer_bucket_name,
       'graphicsBucketName' => $mt_aws_s3_graphics_bucket_name,
