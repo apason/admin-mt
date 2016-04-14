@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $User
  * @property \Cake\ORM\Association\HasMany $Answer
+ * @property \Cake\ORM\Association\HasMany $Likes
  */
 class SubuserTable extends Table
 {
@@ -37,6 +38,9 @@ class SubuserTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Answer', [
+            'foreignKey' => 'subuser_id'
+        ]);
+        $this->hasMany('Likes', [
             'foreignKey' => 'subuser_id'
         ]);
     }

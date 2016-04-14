@@ -52,7 +52,7 @@ class SubuserFixture extends TestFixture
         [
             'id' => 1,
             'user_id' => 1,
-            'created' => '2016-04-02 10:11:49',
+            'created' => '2016-04-14 14:19:01',
             'nick' => 'Lorem ipsum dolor sit amet',
             'avatar_url' => 'Lorem ipsum dolor sit amet'
         ],
