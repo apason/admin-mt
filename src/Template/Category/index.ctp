@@ -16,6 +16,8 @@
                 <th><?= $this->Paginator->sort('uploaded') ?></th>
                 <th><?= $this->Paginator->sort('enabled') ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
+                <th><?= $this->Paginator->sort('coordinate_x') ?></th>
+                <th><?= $this->Paginator->sort('coordinate_y') ?></th>
                 <th><?= $this->Paginator->sort('bg_uri') ?></th>
                 <th><?= $this->Paginator->sort('icon_uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -29,6 +31,8 @@
                 <td><?= h($category->uploaded) ?></td>
                 <td><?= h($category->enabled) ?></td>
                 <td><?= h($category->name) ?></td>
+                <td><?= $this->Number->format($category->coordinate_x) ?></td>
+                <td><?= $this->Number->format($category->coordinate_y) ?></td>
                 <td><?= h($category->bg_uri) ?></td>
                 <td><?= h($category->icon_uri) ?></td>
                 <td class="actions">

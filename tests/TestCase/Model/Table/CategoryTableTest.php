@@ -28,7 +28,8 @@ class CategoryTableTest extends TestCase
         'app.task',
         'app.answer',
         'app.subuser',
-        'app.user'
+        'app.user',
+        'app.likes'
     ];
 
     /**

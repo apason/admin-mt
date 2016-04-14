@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property bool $uploaded
  * @property bool $enabled
  * @property string $name
+ * @property int $coordinate_x
+ * @property int $coordinate_y
  * @property string $bg_uri
  * @property string $icon_uri
  * @property \App\Model\Entity\Task[] $task

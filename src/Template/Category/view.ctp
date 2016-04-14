@@ -13,8 +13,28 @@
     <h3><?= h($category->name) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th><?= __('Name') ?></th>
+            <td><?= h($category->name) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Bg Uri') ?></th>
+            <td><?= h($category->bg_uri) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Icon Uri') ?></th>
+            <td><?= h($category->icon_uri) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($category->id) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Coordinate X') ?></th>
+            <td><?= $this->Number->format($category->coordinate_x) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Coordinate Y') ?></th>
+            <td><?= $this->Number->format($category->coordinate_y) ?></td>
         </tr>
         <tr>
             <th><?= __('Created') ?></th>
@@ -28,18 +48,6 @@
             <th><?= __('Enabled') ?></th>
             <td><?= $category->enabled ? __('Yes') : __('No'); ?></td>
         </tr>
-        <tr>
-            <th><?= __('Name') ?></th>
-            <td><?= h($category->name) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Bg Uri') ?></th>
-            <td><?= h($category->bg_uri) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Icon Uri') ?></th>
-            <td><?= h($category->icon_uri) ?></td>
-        </tr>        
     </table>
     <div class="related">
         <h4><?= __('Related Task') ?></h4>
