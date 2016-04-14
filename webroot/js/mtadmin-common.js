@@ -30,7 +30,7 @@ function taskIconUploadCompleted(taskId, iconUri) {
 // Generates a filename for the video uploading.
 // Name format: task_id_[id].[extension]
 // Supported video formats are: mp4, webm.
-function generateTaskVideoFilename(task_id, originalFile) {
+function generateTaskVideoFilename(taskId, originalFile) {
   var extension = '';
   if (originalFile.type == 'video/mp4') {
     extension = ".mp4";
@@ -42,14 +42,14 @@ function generateTaskVideoFilename(task_id, originalFile) {
     extension = ".mkv";
   }
 
-  var filename = "task_id_" + task_id + extension;
+  var filename = "task_id_" + taskId + extension;
   return filename;
 }
 
 // Generates a filename for the icon uploading.
 // Name format: task_icon_id_[id].[extension]
 // Supported image formats are: jpg, png.
-function generateTaskIconFilename(task_id, originalFile) {
+function generateTaskIconFilename(taskId, originalFile) {
   var extension = '';
   if (originalFile.type == 'image/png') {
     extension = ".png";
@@ -58,6 +58,50 @@ function generateTaskIconFilename(task_id, originalFile) {
     extension = ".jpg";
   }
 
-  var filename = "task_icon_id_" + task_id + extension;
+  var filename = "task_icon_id_" + taskId + extension;
+  return filename;
+}
+
+// Category-related helper functions
+
+// Makes an XMLHttpRequest to
+// /category/background_upload_completed/category_id/bg_uri.
+function categoryBackgroundUploadCompleted(categoryId, bgUri) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/category/background_upload_completed/" + categoryId + "/" + bgUri, true);
+  xhttp.send();
+}
+
+// Makes an XMLHttpRequest to
+// /task/icon_upload_completed/task_id/icon_uri.
+function categoryIconUploadCompleted(categoryId, iconUri) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "/category/icon_upload_completed/" + categoryId + "/" + iconUri, true);
+  xhttp.send();
+}
+
+// Generates a filename for the background uploading.
+// Name format: category_bg_id_[id].[extension]
+// Supported image formats are: png.
+function generateCategoryBackgroundFilename(categoryId, originalFile) {
+  var extension = '';
+  if (originalFile.type == 'image/png') {
+    extension = ".png";
+  }
+
+  var filename = "category_bg_id_" + categoryId + extension;
+  return filename;
+}
+
+// Generates a filename for the icon uploading.
+// Name format: category_icon_id_[id].[extension]
+// Supported image formats are: png.
+function generateCategoryIconFilename(categoryId, originalFile) {
+  var extension = '';
+  if (originalFile.type == 'image/png') {
+    extension = ".png";
+  }
+
+  var filename = "category_icon_id_" + categoryId + extension;
   return filename;
 }

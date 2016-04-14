@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
+use Cake\Core\Configure;
 
 /**
  * Category Controller
@@ -51,9 +53,16 @@ class CategoryController extends AppController
         $category = $this->Category->newEntity();
         if ($this->request->is('post')) {
             $category = $this->Category->patchEntity($category, $this->request->data);
+            $category->created = new Time();
+            $category->uploaded = false;
+            $category->enabled = false;
+            $category->coordinate_x = 0;
+            $category->coordinate_y = 0;
+            $category->bg_uri = null;
+            $category->icon_uri = null;
             if ($this->Category->save($category)) {
                 $this->Flash->success(__('The category has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit', $category->id]);
             } else {
                 $this->Flash->error(__('The category could not be saved. Please, try again.'));
             }
@@ -85,6 +94,10 @@ class CategoryController extends AppController
         }
         $this->set(compact('category'));
         $this->set('_serialize', ['category']);
+
+        $this->set('graphicsBucketName', Configure::readOrFail('AwsS3Settings.graphicsBucketName'));
+        $this->set('awsAccessKey', Configure::readOrFail('AwsS3Settings.accessKey'));
+        $this->set('awsSecretAccessKey', Configure::readOrFail('AwsS3Settings.secretAccessKey'));
     }
 
     /**
@@ -104,5 +117,50 @@ class CategoryController extends AppController
             $this->Flash->error(__('The category could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function backgroundUploadCompleted($id = null, $background_uri = null) {
+      // Disable view rendering
+      $this->autoRender = false;
+
+      if ($id == null) {
+          return;
+      }
+      if ($background_uri == null) {
+        return;
+      }
+
+      // Update the background uri to the database.
+      // If both uri's have been set, set uploaded = true.
+      $category = $this->Category->get($id, [
+          'contain' => []
+      ]);
+      $category->bg_uri = $background_uri;
+      if ($category->icon_uri != null && $category->icon_uri != '') {
+        $category->uploaded = true;
+      }
+      $this->Category->save($category);
+    }
+
+    public function iconUploadCompleted($id = null, $icon_uri = null) {
+      // Disable view rendering
+      $this->autoRender = false;
+
+      if ($id == null) {
+          return;
+      }
+      if ($icon_uri == null) {
+        return;
+      }
+
+      // Update the icon uri to the database.
+      $category = $this->Category->get($id, [
+          'contain' => []
+      ]);
+      $category->icon_uri = $icon_uri;
+      if ($category->bg_uri != null && $category->bg_uri != '') {
+        $category->uploaded = true;
+      }
+      $this->Category->save($category);
     }
 }
