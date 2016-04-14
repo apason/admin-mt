@@ -32,6 +32,10 @@
             <th><?= __('Enabled') ?></th>
             <td><?= $user->enabled ? __('Yes') : __('No'); ?></td>
         </tr>
+        <tr>
+            <th><?= __('Privacy Level') ?></th>
+            <td><?= $user->privacy_level ? __('Yes') : __('No'); ?></td>
+        </tr>
     </table>
     <div class="related">
         <h4><?= __('Related Subuser') ?></h4>

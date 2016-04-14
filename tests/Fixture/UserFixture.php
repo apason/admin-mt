@@ -29,6 +29,7 @@ class UserFixture extends TestFixture
         'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'email' => ['type' => 'string', 'length' => 60, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'password' => ['type' => 'string', 'length' => 128, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'privacy_level' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -47,10 +48,11 @@ class UserFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'created' => '2016-04-02 10:11:38',
+            'created' => '2016-04-14 14:19:32',
             'enabled' => 1,
             'email' => 'Lorem ipsum dolor sit amet',
-            'password' => 'Lorem ipsum dolor sit amet'
+            'password' => 'Lorem ipsum dolor sit amet',
+            'privacy_level' => 1
         ],
     ];
 }

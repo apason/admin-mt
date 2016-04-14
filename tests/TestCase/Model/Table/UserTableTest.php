@@ -28,7 +28,8 @@ class UserTableTest extends TestCase
         'app.subuser',
         'app.answer',
         'app.task',
-        'app.category'
+        'app.category',
+        'app.likes'
     ];
 
     /**

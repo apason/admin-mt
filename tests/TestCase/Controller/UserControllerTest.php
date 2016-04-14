@@ -20,7 +20,8 @@ class UserControllerTest extends IntegrationTestCase
         'app.subuser',
         'app.answer',
         'app.task',
-        'app.category'
+        'app.category',
+        'app.likes'
     ];
 
     /**

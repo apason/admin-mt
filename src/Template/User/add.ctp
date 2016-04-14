@@ -14,6 +14,7 @@
             echo $this->Form->input('enabled');
             echo $this->Form->input('email');
             echo $this->Form->input('password');
+            echo $this->Form->input('privacy_level');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

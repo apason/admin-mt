@@ -62,6 +62,11 @@ class UserTable extends Table
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
+        $validator
+            ->boolean('privacy_level')
+            ->requirePresence('privacy_level', 'create')
+            ->notEmpty('privacy_level');
+
         return $validator;
     }
 
