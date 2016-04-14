@@ -20,7 +20,8 @@ class AnswerControllerTest extends IntegrationTestCase
         'app.task',
         'app.category',
         'app.subuser',
-        'app.user'
+        'app.user',
+        'app.likes'
     ];
 
     /**

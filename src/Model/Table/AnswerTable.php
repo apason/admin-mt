@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Task
  * @property \Cake\ORM\Association\BelongsTo $Subuser
+ * @property \Cake\ORM\Association\HasMany $Likes
  */
 class AnswerTable extends Table
 {
@@ -39,6 +40,9 @@ class AnswerTable extends Table
         $this->belongsTo('Subuser', [
             'foreignKey' => 'subuser_id',
             'joinType' => 'INNER'
+        ]);
+        $this->hasMany('Likes', [
+            'foreignKey' => 'answer_id'
         ]);
     }
 

@@ -28,7 +28,8 @@ class AnswerTableTest extends TestCase
         'app.task',
         'app.category',
         'app.subuser',
-        'app.user'
+        'app.user',
+        'app.likes'
     ];
 
     /**
