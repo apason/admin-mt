@@ -56,7 +56,7 @@ class TaskFixture extends TestFixture
         [
             'id' => 1,
             'category_id' => 1,
-            'created' => '2016-04-02 10:12:06',
+            'created' => '2016-04-14 14:26:12',
             'uploaded' => 1,
             'enabled' => 1,
             'name' => 'Lorem ipsum dolor sit amet',

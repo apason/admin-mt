@@ -28,7 +28,8 @@ class TaskTableTest extends TestCase
         'app.category',
         'app.answer',
         'app.subuser',
-        'app.user'
+        'app.user',
+        'app.likes'
     ];
 
     /**

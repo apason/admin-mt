@@ -1,11 +1,11 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading">Toiminnot</li>
-        <li><?= $this->Html->link('Uusi tehtävä', ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link('Listaa kategoriat', ['controller' => 'Category', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link('Uusi kategoria', ['controller' => 'Category', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link('Listaa vastaukset', ['controller' => 'Answer', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link('Uusi vastaus', ['controller' => 'Answer', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('New Task'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Category'), ['controller' => 'Category', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Category'), ['controller' => 'Category', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Answer'), ['controller' => 'Answer', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Answer'), ['controller' => 'Answer', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="task index large-9 medium-8 columns content">
