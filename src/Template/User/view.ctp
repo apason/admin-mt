@@ -25,16 +25,16 @@
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
+            <th><?= __('Privacy Level') ?></th>
+            <td><?= $this->Number->format($user->privacy_level) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Created') ?></th>
             <td><?= h($user->created) ?></td>
         </tr>
         <tr>
             <th><?= __('Enabled') ?></th>
             <td><?= $user->enabled ? __('Yes') : __('No'); ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Privacy Level') ?></th>
-            <td><?= $user->privacy_level ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
     <div class="related">
