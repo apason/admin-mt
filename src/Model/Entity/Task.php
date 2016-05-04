@@ -14,6 +14,8 @@ use Cake\ORM\Entity;
  * @property bool $enabled
  * @property string $name
  * @property string $info
+ * @property int $coordinate_x
+ * @property int $coordinate_y
  * @property string $uri
  * @property string $icon_uri
  * @property \App\Model\Entity\Answer[] $answer

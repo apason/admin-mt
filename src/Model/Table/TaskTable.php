@@ -71,6 +71,14 @@ class TaskTable extends Table
             ->allowEmpty('info');
 
         $validator
+            ->integer('coordinate_x')
+            ->allowEmpty('coordinate_x');
+
+        $validator
+            ->integer('coordinate_y')
+            ->allowEmpty('coordinate_y');
+
+        $validator
             ->allowEmpty('uri');
 
         $validator

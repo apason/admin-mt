@@ -31,6 +31,8 @@ class TaskFixture extends TestFixture
         'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'info' => ['type' => 'string', 'length' => 10000, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'coordinate_x' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'coordinate_y' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'uri' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'icon_uri' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
@@ -42,7 +44,7 @@ class TaskFixture extends TestFixture
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'latin1_swedish_ci'
+            'collation' => 'utf8_general_ci'
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -56,11 +58,13 @@ class TaskFixture extends TestFixture
         [
             'id' => 1,
             'category_id' => 1,
-            'created' => '2016-04-14 14:26:12',
+            'created' => '2016-05-04 07:38:52',
             'uploaded' => 1,
             'enabled' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'info' => 'Lorem ipsum dolor sit amet',
+            'coordinate_x' => 1,
+            'coordinate_y' => 1,
             'uri' => 'Lorem ipsum dolor sit amet',
             'icon_uri' => 'Lorem ipsum dolor sit amet'
         ],
