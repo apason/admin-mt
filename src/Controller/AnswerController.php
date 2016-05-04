@@ -10,7 +10,10 @@ use App\Controller\AppController;
  */
 class AnswerController extends AppController
 {
-
+  public function initialize() {
+    parent::initialize();
+    $this->loadComponent('MtS3Service', array());
+  }
     /**
      * Index method
      *
@@ -41,6 +44,7 @@ class AnswerController extends AppController
         ]);
 
         $this->set('answer', $answer);
+        $this->set('signed_download_url', $this->MtS3Service->getSignedAnswerDownloadUrl($answer->uri));
         $this->set('_serialize', ['answer']);
     }
 
