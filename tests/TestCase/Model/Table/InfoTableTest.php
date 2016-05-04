@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SubuserTable;
+use App\Model\Table\InfoTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SubuserTable Test Case
+ * App\Model\Table\InfoTable Test Case
  */
-class SubuserTableTest extends TestCase
+class InfoTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SubuserTable
+     * @var \App\Model\Table\InfoTable
      */
-    public $Subuser;
+    public $Info;
 
     /**
      * Fixtures
@@ -24,12 +24,7 @@ class SubuserTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.subuser',
-        'app.user',
-        'app.answer',
-        'app.task',
-        'app.category',
-        'app.likes'
+        'app.info'
     ];
 
     /**
@@ -40,8 +35,8 @@ class SubuserTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Subuser') ? [] : ['className' => 'App\Model\Table\SubuserTable'];
-        $this->Subuser = TableRegistry::get('Subuser', $config);
+        $config = TableRegistry::exists('Info') ? [] : ['className' => 'App\Model\Table\InfoTable'];
+        $this->Info = TableRegistry::get('Info', $config);
     }
 
     /**
@@ -51,7 +46,7 @@ class SubuserTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Subuser);
+        unset($this->Info);
 
         parent::tearDown();
     }
@@ -72,16 +67,6 @@ class SubuserTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

@@ -16,6 +16,7 @@
                 <th><?= $this->Paginator->sort('enabled') ?></th>
                 <th><?= $this->Paginator->sort('email') ?></th>
                 <th><?= $this->Paginator->sort('password') ?></th>
+                <th><?= $this->Paginator->sort('pin') ?></th>
                 <th><?= $this->Paginator->sort('privacy_level') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -28,6 +29,7 @@
                 <td><?= h($user->enabled) ?></td>
                 <td><?= h($user->email) ?></td>
                 <td><?= h($user->password) ?></td>
+                <td><?= h($user->pin) ?></td>
                 <td><?= $this->Number->format($user->privacy_level) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>

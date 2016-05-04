@@ -4,18 +4,12 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Subuser Entity.
+ * Info Entity.
  *
- * @property int $id
- * @property int $user_id
- * @property \App\Model\Entity\User $user
- * @property \Cake\I18n\Time $created
- * @property string $nick
- * @property string $avatar_url
- * @property \App\Model\Entity\Answer[] $answer
- * @property \App\Model\Entity\Like[] $likes
+ * @property string $id
+ * @property string $info_text
  */
-class Subuser extends Entity
+class Info extends Entity
 {
 
     /**

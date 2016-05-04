@@ -6,6 +6,8 @@
         <li><?= $this->Html->link(__('New Task'), ['controller' => 'Task', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Subuser'), ['controller' => 'Subuser', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Subuser'), ['controller' => 'Subuser', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Likes'), ['controller' => 'Likes', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Like'), ['controller' => 'Likes', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="answer index large-9 medium-8 columns content">
@@ -19,6 +21,7 @@
                 <th><?= $this->Paginator->sort('created') ?></th>
                 <th><?= $this->Paginator->sort('uploaded') ?></th>
                 <th><?= $this->Paginator->sort('enabled') ?></th>
+                <th><?= $this->Paginator->sort('answer_type') ?></th>
                 <th><?= $this->Paginator->sort('uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -32,6 +35,7 @@
                 <td><?= h($answer->created) ?></td>
                 <td><?= h($answer->uploaded) ?></td>
                 <td><?= h($answer->enabled) ?></td>
+                <td><?= h($answer->answer_type) ?></td>
                 <td><?= h($answer->uri) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $answer->id]) ?>

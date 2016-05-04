@@ -9,6 +9,8 @@
         <li><?= $this->Html->link(__('New Task'), ['controller' => 'Task', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Subuser'), ['controller' => 'Subuser', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Subuser'), ['controller' => 'Subuser', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Likes'), ['controller' => 'Likes', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Like'), ['controller' => 'Likes', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="answer view large-9 medium-8 columns content">
@@ -21,6 +23,10 @@
         <tr>
             <th><?= __('Subuser') ?></th>
             <td><?= $answer->has('subuser') ? $this->Html->link($answer->subuser->id, ['controller' => 'Subuser', 'action' => 'view', $answer->subuser->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Answer Type') ?></th>
+            <td><?= h($answer->answer_type) ?></td>
         </tr>
         <tr>
             <th><?= __('Uri') ?></th>
@@ -43,4 +49,31 @@
             <td><?= $answer->enabled ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+    <div class="related">
+        <h4><?= __('Related Likes') ?></h4>
+        <?php if (!empty($answer->likes)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('Subuser Id') ?></th>
+                <th><?= __('Answer Id') ?></th>
+                <th><?= __('Created') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($answer->likes as $likes): ?>
+            <tr>
+                <td><?= h($likes->id) ?></td>
+                <td><?= h($likes->subuser_id) ?></td>
+                <td><?= h($likes->answer_id) ?></td>
+                <td><?= h($likes->created) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Likes', 'action' => 'view', $likes->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Likes', 'action' => 'edit', $likes->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Likes', 'action' => 'delete', $likes->id], ['confirm' => __('Are you sure you want to delete # {0}?', $likes->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
+    </div>
 </div>

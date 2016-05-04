@@ -37,7 +37,7 @@ class SubuserController extends AppController
     public function view($id = null)
     {
         $subuser = $this->Subuser->get($id, [
-            'contain' => ['User', 'Answer']
+            'contain' => ['User', 'Answer', 'Likes']
         ]);
 
         $this->set('subuser', $subuser);

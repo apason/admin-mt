@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property bool $enabled
  * @property string $email
  * @property string $password
+ * @property string $pin
  * @property int $privacy_level
  * @property \App\Model\Entity\Subuser[] $subuser
  */

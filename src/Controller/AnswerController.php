@@ -37,7 +37,7 @@ class AnswerController extends AppController
     public function view($id = null)
     {
         $answer = $this->Answer->get($id, [
-            'contain' => ['Task', 'Subuser']
+            'contain' => ['Task', 'Subuser', 'Likes']
         ]);
 
         $this->set('answer', $answer);

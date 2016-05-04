@@ -14,7 +14,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property bool $uploaded
  * @property bool $enabled
+ * @property string $answer_type
  * @property string $uri
+ * @property \App\Model\Entity\Like[] $likes
  */
 class Answer extends Entity
 {

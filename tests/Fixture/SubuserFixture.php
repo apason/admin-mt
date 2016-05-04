@@ -38,7 +38,7 @@ class SubuserFixture extends TestFixture
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'latin1_swedish_ci'
+            'collation' => 'utf8_general_ci'
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -52,7 +52,7 @@ class SubuserFixture extends TestFixture
         [
             'id' => 1,
             'user_id' => 1,
-            'created' => '2016-04-14 14:19:01',
+            'created' => '2016-05-04 06:20:46',
             'nick' => 'Lorem ipsum dolor sit amet',
             'avatar_url' => 'Lorem ipsum dolor sit amet'
         ],

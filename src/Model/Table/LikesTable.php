@@ -1,20 +1,19 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Answer;
+use App\Model\Entity\Like;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Answer Model
+ * Likes Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Task
  * @property \Cake\ORM\Association\BelongsTo $Subuser
- * @property \Cake\ORM\Association\HasMany $Likes
+ * @property \Cake\ORM\Association\BelongsTo $Answer
  */
-class AnswerTable extends Table
+class LikesTable extends Table
 {
 
     /**
@@ -27,22 +26,19 @@ class AnswerTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('answer');
+        $this->table('likes');
         $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Task', [
-            'foreignKey' => 'task_id',
-            'joinType' => 'INNER'
-        ]);
         $this->belongsTo('Subuser', [
             'foreignKey' => 'subuser_id',
             'joinType' => 'INNER'
         ]);
-        $this->hasMany('Likes', [
-            'foreignKey' => 'answer_id'
+        $this->belongsTo('Answer', [
+            'foreignKey' => 'answer_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -58,23 +54,6 @@ class AnswerTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->boolean('uploaded')
-            ->requirePresence('uploaded', 'create')
-            ->notEmpty('uploaded');
-
-        $validator
-            ->boolean('enabled')
-            ->requirePresence('enabled', 'create')
-            ->notEmpty('enabled');
-
-        $validator
-            ->requirePresence('answer_type', 'create')
-            ->notEmpty('answer_type');
-
-        $validator
-            ->allowEmpty('uri');
-
         return $validator;
     }
 
@@ -87,8 +66,8 @@ class AnswerTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['task_id'], 'Task'));
         $rules->add($rules->existsIn(['subuser_id'], 'Subuser'));
+        $rules->add($rules->existsIn(['answer_id'], 'Answer'));
         return $rules;
     }
 }

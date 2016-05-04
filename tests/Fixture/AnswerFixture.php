@@ -30,6 +30,7 @@ class AnswerFixture extends TestFixture
         'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'uploaded' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'enabled' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
+        'answer_type' => ['type' => 'string', 'length' => 10, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         'uri' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'task_id' => ['type' => 'index', 'columns' => ['task_id'], 'length' => []],
@@ -42,7 +43,7 @@ class AnswerFixture extends TestFixture
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'latin1_swedish_ci'
+            'collation' => 'utf8_general_ci'
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -57,9 +58,10 @@ class AnswerFixture extends TestFixture
             'id' => 1,
             'task_id' => 1,
             'subuser_id' => 1,
-            'created' => '2016-04-14 14:20:07',
+            'created' => '2016-05-04 07:36:30',
             'uploaded' => 1,
             'enabled' => 1,
+            'answer_type' => 'Lorem ip',
             'uri' => 'Lorem ipsum dolor sit amet'
         ],
     ];

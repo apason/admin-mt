@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SubuserTable;
+use App\Model\Table\LikesTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SubuserTable Test Case
+ * App\Model\Table\LikesTable Test Case
  */
-class SubuserTableTest extends TestCase
+class LikesTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SubuserTable
+     * @var \App\Model\Table\LikesTable
      */
-    public $Subuser;
+    public $Likes;
 
     /**
      * Fixtures
@@ -24,12 +24,12 @@ class SubuserTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+        'app.likes',
         'app.subuser',
         'app.user',
         'app.answer',
         'app.task',
-        'app.category',
-        'app.likes'
+        'app.category'
     ];
 
     /**
@@ -40,8 +40,8 @@ class SubuserTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Subuser') ? [] : ['className' => 'App\Model\Table\SubuserTable'];
-        $this->Subuser = TableRegistry::get('Subuser', $config);
+        $config = TableRegistry::exists('Likes') ? [] : ['className' => 'App\Model\Table\LikesTable'];
+        $this->Likes = TableRegistry::get('Likes', $config);
     }
 
     /**
@@ -51,7 +51,7 @@ class SubuserTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Subuser);
+        unset($this->Likes);
 
         parent::tearDown();
     }

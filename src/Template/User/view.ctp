@@ -21,6 +21,10 @@
             <td><?= h($user->password) ?></td>
         </tr>
         <tr>
+            <th><?= __('Pin') ?></th>
+            <td><?= h($user->pin) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
