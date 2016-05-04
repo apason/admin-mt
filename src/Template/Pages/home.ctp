@@ -6,5 +6,7 @@
 <li><a href="/answer">Vastaukset</a></li>
 <li><a href="/user">Käyttäjät</a></li>
 <li><a href="/subuser">Alakäyttäjät</a></li>
+<li><a href="/likes">Tykkäykset</a></li>
+<li><a href="/info">Yleiset asetukset</a></li>
 </ul>
 </section>
