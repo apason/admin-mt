@@ -49,6 +49,25 @@
             <td><?= $answer->enabled ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+    
+    <?php
+      // If the answer has been uploaded, we show the answer.
+      if ($answer->uploaded == true): ?>
+      <div>
+
+      <?php if ($answer->answer_type == 'image'): ?>
+
+        <img src="<?php print $signed_download_url; ?>">
+
+      <?php endif; if ($answer->answer_type=='video'): ?>
+
+        <video controls><source src="<?php print $signed_download_url; ?>"></video>
+
+      <?php endif; ?>
+
+    </div>
+  <?php endif; ?>
+
     <div class="related">
         <h4><?= __('Related Likes') ?></h4>
         <?php if (!empty($answer->likes)): ?>
