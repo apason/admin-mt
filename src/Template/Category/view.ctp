@@ -61,6 +61,8 @@
                 <th><?= __('Enabled') ?></th>
                 <th><?= __('Name') ?></th>
                 <th><?= __('Info') ?></th>
+                <th><?= __('Coordinate X') ?></th>
+                <th><?= __('Coordinate Y') ?></th>
                 <th><?= __('Uri') ?></th>
                 <th><?= __('Icon Uri') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -74,6 +76,8 @@
                 <td><?= h($task->enabled) ?></td>
                 <td><?= h($task->name) ?></td>
                 <td><?= h($task->info) ?></td>
+                <td><?= h($task->coordinate_x) ?></td>
+                <td><?= h($task->coordinate_y) ?></td>
                 <td><?= h($task->uri) ?></td>
                 <td><?= h($task->icon_uri) ?></td>
                 <td class="actions">

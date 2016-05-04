@@ -64,13 +64,11 @@ class CategoryTable extends Table
 
         $validator
             ->integer('coordinate_x')
-            ->requirePresence('coordinate_x', 'create')
-            ->notEmpty('coordinate_x');
+            ->allowEmpty('coordinate_x');
 
         $validator
             ->integer('coordinate_y')
-            ->requirePresence('coordinate_y', 'create')
-            ->notEmpty('coordinate_y');
+            ->allowEmpty('coordinate_y');
 
         $validator
             ->allowEmpty('bg_uri');

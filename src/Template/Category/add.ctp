@@ -11,13 +11,13 @@
     <fieldset>
         <legend><?= __('Add Category') ?></legend>
         <?php
-            // echo $this->Form->input('uploaded');
-            // echo $this->Form->input('enabled');
+            echo $this->Form->input('uploaded');
+            echo $this->Form->input('enabled');
             echo $this->Form->input('name');
-            // echo $this->Form->input('coordinate_x');
-            // echo $this->Form->input('coordinate_y');
-            // echo $this->Form->input('bg_uri');
-            // echo $this->Form->input('icon_uri');
+            echo $this->Form->input('coordinate_x');
+            echo $this->Form->input('coordinate_y');
+            echo $this->Form->input('bg_uri');
+            echo $this->Form->input('icon_uri');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
