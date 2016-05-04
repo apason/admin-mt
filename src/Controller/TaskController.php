@@ -12,7 +12,10 @@ use Cake\Core\Configure;
  */
 class TaskController extends AppController
 {
-
+  public function initialize() {
+    parent::initialize();
+    $this->loadComponent('MtS3Service', array());
+  }
     /**
      * Index method
      *
