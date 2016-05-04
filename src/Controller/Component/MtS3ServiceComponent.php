@@ -17,17 +17,38 @@ class MtS3ServiceComponent extends Component {
 
     // Create a credentials object and populate it.
     $credentials = new Credentials(
-      Configure::readOrFail('AwsS3Settings.accessKey'),
-      Configure::readOrFail('AwsS3Settings.secretAccessKey'));
+      $key = Configure::readOrFail('AwsS3Settings.accessKey'),
+      $secret = Configure::readOrFail('AwsS3Settings.secretAccessKey'));
     // Create a S3Client instance.
     $this->S3 = new S3Client([
         'version' => 'latest',
-        'region'  => 'eu-central-1'
+        'region'  => 'eu-central-1',
+        'credentials' => array(
+          'key' => $key,
+          'secret' => $secret)
     ]);
   }
 
-  // Sets video metadata to allow streaming.
-  public function setTaskMetadata($id = null) {
+  public function getSignedAnswerDownloadUrl($object_name) {
+    $answer_bucket_name = Configure::readOrFail('AwsS3Settings.answerBucketName');
+    return $this->getSignedDownloadUrl($answer_bucket_name, $object_name);
+  }
 
+  public function getSignedDownloadUrl($bucket_name, $object_name) {
+    $cmd = $this->S3->getCommand('GetObject', [
+      'Bucket' => $bucket_name,
+      'Key'    => $object_name
+    ]);
+
+    return $this->S3->createPresignedRequest($cmd, '+15 minutes')->getUri();
+  }
+
+  public function getSignedUploadUrl($bucket_name, $object_name, $content_type) {
+    $cmd = $this->S3->getCommand('PutObject', [
+      'Bucket' => $bucket_name,
+      'Key'    => $object_name
+    ]);
+
+    return $this->S3->createPresignedRequest($cmd, '+15 minutes')->getUri();
   }
 }
